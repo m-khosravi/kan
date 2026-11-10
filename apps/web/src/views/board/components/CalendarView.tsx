@@ -301,9 +301,12 @@ const CalendarView = ({
             type="button"
             aria-label={t`Previous month`}
             onClick={() => goToMonth(subMonths(currentMonth, 1))}
-            className={twMerge(navButtonClasses, "rounded-l-md")}
+            className={twMerge(navButtonClasses, "rounded-s-md")}
           >
-            <HiChevronLeft className="h-4 w-4" aria-hidden="true" />
+            <HiChevronLeft
+              className="h-4 w-4 rtl:rotate-180"
+              aria-hidden="true"
+            />
           </button>
           <span className={dividerClasses} />
           <button
@@ -318,9 +321,12 @@ const CalendarView = ({
             type="button"
             aria-label={t`Next month`}
             onClick={() => goToMonth(addMonths(currentMonth, 1))}
-            className={twMerge(navButtonClasses, "rounded-r-md")}
+            className={twMerge(navButtonClasses, "rounded-e-md")}
           >
-            <HiChevronRight className="h-4 w-4" aria-hidden="true" />
+            <HiChevronRight
+              className="h-4 w-4 rtl:rotate-180"
+              aria-hidden="true"
+            />
           </button>
         </div>
       </header>

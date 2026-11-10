@@ -11,7 +11,12 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-geist-sans)", ...fontFamily.sans],
+        sans: [
+          "var(--font-sans)",
+          "var(--font-geist-sans)",
+          ...fontFamily.sans,
+        ],
+        vazirmatn: ["var(--font-vazirmatn)", ...fontFamily.sans],
         mono: fontFamily.mono,
       },
     },

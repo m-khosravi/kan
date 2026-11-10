@@ -287,7 +287,7 @@ export function AttachmentThumbnails({
                   className="rounded-full bg-light-50 p-1.5 text-light-1000 transition-colors hover:bg-light-100 focus:outline-none dark:bg-dark-50 dark:text-dark-1000 dark:hover:bg-dark-100"
                   aria-label="Previous image"
                 >
-                  <HiChevronLeft className="h-4 w-4" />
+                  <HiChevronLeft className="h-4 w-4 rtl:rotate-180" />
                 </button>
               )}
 
@@ -300,7 +300,7 @@ export function AttachmentThumbnails({
                   className="rounded-full bg-light-50 p-1.5 text-light-1000 transition-colors hover:bg-light-100 focus:outline-none dark:bg-dark-50 dark:text-dark-1000 dark:hover:bg-dark-100"
                   aria-label="Next image"
                 >
-                  <HiChevronRight className="h-4 w-4" />
+                  <HiChevronRight className="h-4 w-4 rtl:rotate-180" />
                 </button>
               )}
 

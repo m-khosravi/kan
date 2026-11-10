@@ -12,12 +12,18 @@ const locales = [
   "ru",
   "pl",
   "ptbr",
+  "fa",
 ] as const;
 
 describe("matchBrowserLocale", () => {
   it("matches a regional browser language to a regional locale", () => {
     expect(matchBrowserLocale(["pt-BR"], locales)).toBe("ptbr");
     expect(matchBrowserLocale(["pt_br"], locales)).toBe("ptbr");
+  });
+
+  it("matches Persian browser languages to fa", () => {
+    expect(matchBrowserLocale(["fa-IR"], locales)).toBe("fa");
+    expect(matchBrowserLocale(["fa"], locales)).toBe("fa");
   });
 
   it("falls back to the regional locale for a bare language", () => {

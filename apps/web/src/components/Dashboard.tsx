@@ -190,12 +190,12 @@ export default function Dashboard({
             {isSideNavOpen ? (
               <TbLayoutSidebarLeftCollapse
                 size={20}
-                className="text-light-900 dark:text-dark-900"
+                className="text-light-900 dark:text-dark-900 rtl:scale-x-[-1]"
               />
             ) : (
               <TbLayoutSidebarLeftExpand
                 size={20}
-                className="text-light-900 dark:text-dark-900"
+                className="text-light-900 dark:text-dark-900 rtl:scale-x-[-1]"
               />
             )}
           </button>
@@ -209,12 +209,12 @@ export default function Dashboard({
               {isRightPanelOpen ? (
                 <TbLayoutSidebarRightCollapse
                   size={20}
-                  className="text-light-900 dark:text-dark-900"
+                  className="text-light-900 dark:text-dark-900 rtl:scale-x-[-1]"
                 />
               ) : (
                 <TbLayoutSidebarRightExpand
                   size={20}
-                  className="text-light-900 dark:text-dark-900"
+                  className="text-light-900 dark:text-dark-900 rtl:scale-x-[-1]"
                 />
               )}
             </button>
@@ -224,7 +224,7 @@ export default function Dashboard({
         <div className="flex h-[calc(100dvh-4.5rem)] min-h-0 w-full md:h-[calc(100dvh-1.5rem)]">
           <div
             ref={sideNavRef}
-            className={`fixed top-12 z-40 h-[calc(100dvh-3rem)] w-[calc(100vw-1.5rem)] transform transition-transform duration-300 ease-in-out md:relative md:top-0 md:h-full md:w-auto md:translate-x-0 ${isSideNavOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"} `}
+            className={`fixed start-0 top-12 z-40 h-[calc(100dvh-3rem)] w-[calc(100vw-1.5rem)] transform transition-transform duration-300 ease-in-out md:relative md:start-0 md:top-0 md:h-full md:w-auto md:translate-x-0 ${isSideNavOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0 rtl:translate-x-full rtl:md:translate-x-0"} `}
           >
             <SideNavigation
               user={{
@@ -245,8 +245,10 @@ export default function Dashboard({
               {hasRightPanel && rightPanel && (
                 <div
                   ref={rightPanelRef}
-                  className={`fixed right-0 top-12 z-40 h-[calc(100dvh-3rem)] w-80 transform border-l border-light-300 bg-light-200 transition-transform duration-300 ease-in-out dark:border-dark-300 dark:bg-dark-100 md:hidden ${
-                    isRightPanelOpen ? "translate-x-0" : "translate-x-full"
+                  className={`fixed end-0 top-12 z-40 h-[calc(100dvh-3rem)] w-80 transform border-s border-light-300 bg-light-200 transition-transform duration-300 ease-in-out dark:border-dark-300 dark:bg-dark-100 md:hidden ${
+                    isRightPanelOpen
+                      ? "translate-x-0"
+                      : "translate-x-full rtl:-translate-x-full"
                   }`}
                 >
                   <div className="h-full">{rightPanel}</div>

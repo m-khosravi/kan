@@ -3,7 +3,12 @@ import { I18nProvider } from "@lingui/react";
 import { createContext, useContext, useEffect, useState } from "react";
 
 import type { Locale } from "~/locales";
-import { defaultLocale, locales } from "~/locales";
+import {
+  defaultLocale,
+  getLocaleDirection,
+  isRtlLocale,
+  locales,
+} from "~/locales";
 import { activateLocale, i18n, initializeI18n } from "~/utils/i18n";
 import { matchBrowserLocale } from "~/utils/locale";
 
@@ -11,6 +16,8 @@ interface LinguiContextType {
   locale: Locale;
   setLocale: (locale: Locale) => void;
   availableLocales: Locale[];
+  dir: "rtl" | "ltr";
+  isRtl: boolean;
 }
 
 const LinguiContext = createContext<LinguiContextType | undefined>(undefined);
@@ -62,8 +69,12 @@ export function LinguiProviderWrapper({
   }, [initialLocale]);
 
   useEffect(() => {
+    const dir = getLocaleDirection(locale);
+    document.documentElement.dir = dir;
+    document.documentElement.lang = locale;
+
     if (isHydrated && locale !== defaultLocale) {
-      activateLocale(locale).then(() => {
+      void activateLocale(locale).then(() => {
         localStorage.setItem("locale", locale);
       });
     } else if (isHydrated) {
@@ -71,9 +82,18 @@ export function LinguiProviderWrapper({
     }
   }, [locale, isHydrated]);
 
+  const isRtl = isRtlLocale(locale);
+  const dir = getLocaleDirection(locale);
+
   return (
     <LinguiContext.Provider
-      value={{ locale, setLocale, availableLocales: [...locales] }}
+      value={{
+        locale,
+        setLocale,
+        availableLocales: [...locales],
+        dir,
+        isRtl,
+      }}
     >
       <I18nProvider i18n={i18n} key={locale}>
         {children}

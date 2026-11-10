@@ -377,7 +377,7 @@ export default function CardPage({ isTemplate }: { isTemplate?: boolean }) {
                 >
                   {workspace.name}
                 </Link>
-                <IoChevronForwardSharp className="h-[10px] w-[10px] text-light-900 dark:text-dark-900" />
+                <IoChevronForwardSharp className="h-[10px] w-[10px] text-light-900 dark:text-dark-900 rtl:rotate-180" />
                 <Link
                   className="whitespace-nowrap text-sm font-bold leading-[1.5rem] text-light-900 dark:text-dark-950"
                   href={boardReturnUrl}
@@ -387,7 +387,7 @@ export default function CardPage({ isTemplate }: { isTemplate?: boolean }) {
                 {card.cardNumber != null &&
                   card.list.board.workspace.cardPrefix && (
                     <>
-                      <IoChevronForwardSharp className="h-[10px] w-[10px] text-light-900 dark:text-dark-900" />
+                      <IoChevronForwardSharp className="h-[10px] w-[10px] text-light-900 dark:text-dark-900 rtl:rotate-180" />
                       <span className="whitespace-nowrap text-sm font-bold leading-[1.5rem] text-light-700 dark:text-dark-800">
                         {card.list.board.workspace.cardPrefix}-{card.cardNumber}
                       </span>

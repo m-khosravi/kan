@@ -77,7 +77,7 @@ export default function UserMenu({
         ) : (
           <Menu.Button
             className="flex w-full items-center rounded-md p-1.5 text-neutral-900 hover:bg-light-200 dark:text-dark-900 dark:hover:bg-dark-200 dark:hover:text-dark-1000"
-            title={isCollapsed ? (displayName || email) : undefined}
+            title={isCollapsed ? displayName || email : undefined}
           >
             {avatarUrl ? (
               <Image
@@ -121,24 +121,24 @@ export default function UserMenu({
       >
         <Menu.Items
           className={twMerge(
-            "absolute bottom-[40px] z-10 mt-2 origin-top-left rounded-md border border-light-600 bg-light-50 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:border-dark-600 dark:bg-dark-300",
-            isCollapsed ? "left-0 w-48" : "left-0 w-full",
+            "absolute bottom-[40px] z-10 mt-2 origin-top-left rounded-md border border-light-600 bg-light-50 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:border-dark-600 dark:bg-dark-300 rtl:origin-top-right",
+            isCollapsed ? "start-0 w-48" : "start-0 w-full",
           )}
         >
           <div className="flex flex-col text-neutral-900 dark:text-dark-1000">
             <div className="p-1">
-              <div className="flex w-full items-center px-3 py-2 text-left text-xs">
+              <div className="flex w-full items-center px-3 py-2 text-start text-xs">
                 <span>{t`Theme`}</span>
               </div>
               <Menu.Item>
                 <button
                   onClick={() => setTheme("system")}
-                  className="flex w-full items-center rounded-[5px] px-3 py-2 text-left text-xs hover:bg-light-200 dark:hover:bg-dark-400"
+                  className="flex w-full items-center rounded-[5px] px-3 py-2 text-start text-xs hover:bg-light-200 dark:hover:bg-dark-400"
                 >
                   <span
                     className={twMerge(
                       theme === "system" ? "visible" : "invisible",
-                      "mr-4 h-[6px] w-[6px] rounded-full bg-light-900 dark:bg-dark-900",
+                      "me-4 h-[6px] w-[6px] rounded-full bg-light-900 dark:bg-dark-900",
                     )}
                   />
                   {t`System`}
@@ -147,12 +147,12 @@ export default function UserMenu({
               <Menu.Item>
                 <button
                   onClick={() => setTheme("dark")}
-                  className="flex w-full items-center rounded-[5px] px-3 py-2 text-left text-xs hover:bg-light-200 dark:hover:bg-dark-400"
+                  className="flex w-full items-center rounded-[5px] px-3 py-2 text-start text-xs hover:bg-light-200 dark:hover:bg-dark-400"
                 >
                   <span
                     className={twMerge(
                       theme === "dark" ? "visible" : "invisible",
-                      "mr-4 h-[6px] w-[6px] rounded-full bg-light-900 dark:bg-dark-900",
+                      "me-4 h-[6px] w-[6px] rounded-full bg-light-900 dark:bg-dark-900",
                     )}
                   />
                   {t`Dark`}
@@ -161,12 +161,12 @@ export default function UserMenu({
               <Menu.Item>
                 <button
                   onClick={() => setTheme("light")}
-                  className="flex w-full items-center rounded-[5px] px-3 py-2 text-left text-xs hover:bg-light-200 dark:hover:bg-dark-400"
+                  className="flex w-full items-center rounded-[5px] px-3 py-2 text-start text-xs hover:bg-light-200 dark:hover:bg-dark-400"
                 >
                   <span
                     className={twMerge(
                       theme === "light" ? "visible" : "invisible",
-                      "mr-4 h-[6px] w-[6px] rounded-full bg-light-900 dark:bg-dark-900",
+                      "me-4 h-[6px] w-[6px] rounded-full bg-light-900 dark:bg-dark-900",
                     )}
                   />
                   {t`Light`}
@@ -182,7 +182,7 @@ export default function UserMenu({
                     }
                     openLegend();
                   }}
-                  className="flex w-full items-center rounded-[5px] px-3 py-2 text-left text-xs hover:bg-light-200 dark:hover:bg-dark-400"
+                  className="flex w-full items-center rounded-[5px] px-3 py-2 text-start text-xs hover:bg-light-200 dark:hover:bg-dark-400"
                 >
                   {t`Shortcuts`}
                 </button>
@@ -193,7 +193,7 @@ export default function UserMenu({
                   target="_blank"
                   rel="noreferrer"
                   onClick={handleLinkClick}
-                  className="flex w-full items-center rounded-[5px] px-3 py-2 text-left text-xs hover:bg-light-200 dark:hover:bg-dark-400"
+                  className="flex w-full items-center rounded-[5px] px-3 py-2 text-start text-xs hover:bg-light-200 dark:hover:bg-dark-400"
                 >
                   {t`Support`}
                 </Link>
@@ -204,7 +204,7 @@ export default function UserMenu({
                   target="_blank"
                   rel="noreferrer"
                   onClick={handleLinkClick}
-                  className="flex w-full items-center rounded-[5px] px-3 py-2 text-left text-xs hover:bg-light-200 dark:hover:bg-dark-400"
+                  className="flex w-full items-center rounded-[5px] px-3 py-2 text-start text-xs hover:bg-light-200 dark:hover:bg-dark-400"
                 >
                   {t`Documentation`}
                 </Link>
@@ -212,7 +212,7 @@ export default function UserMenu({
               <Menu.Item>
                 <button
                   onClick={() => handleModalOpen("NEW_FEEDBACK")}
-                  className="flex w-full items-center rounded-[5px] px-3 py-2 text-left text-xs hover:bg-light-200 dark:hover:bg-dark-400"
+                  className="flex w-full items-center rounded-[5px] px-3 py-2 text-start text-xs hover:bg-light-200 dark:hover:bg-dark-400"
                 >
                   {t`Feedback`}
                 </button>
@@ -222,7 +222,7 @@ export default function UserMenu({
               <Menu.Item>
                 <button
                   onClick={handleLogout}
-                  className="flex w-full items-center rounded-[5px] px-3 py-2 text-left text-xs hover:bg-light-200 dark:hover:bg-dark-400"
+                  className="flex w-full items-center rounded-[5px] px-3 py-2 text-start text-xs hover:bg-light-200 dark:hover:bg-dark-400"
                 >
                   {t`Logout`}
                 </button>

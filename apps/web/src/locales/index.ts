@@ -7,7 +7,8 @@ export const locales = [
   "nl",
   "ru",
   "pl",
-  "ptbr"
+  "ptbr",
+  "fa",
 ] as const;
 
 export type Locale = (typeof locales)[number];
@@ -24,4 +25,15 @@ export const localeNames: Record<Locale, string> = {
   ru: "Русский",
   pl: "Polski",
   ptbr: "Português",
+  fa: "فارسی",
 };
+
+export const rtlLocales: readonly Locale[] = ["fa"] as const;
+
+export function isRtlLocale(locale: string): boolean {
+  return rtlLocales.includes(locale as Locale);
+}
+
+export function getLocaleDirection(locale: string): "rtl" | "ltr" {
+  return isRtlLocale(locale) ? "rtl" : "ltr";
+}

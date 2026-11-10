@@ -4,7 +4,7 @@ import "~/utils/i18n";
 import type { NextPage } from "next";
 import type { AppProps, AppType } from "next/app";
 import type { ReactElement, ReactNode } from "react";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, Vazirmatn } from "next/font/google";
 import { env } from "next-runtime-env";
 import { ThemeProvider } from "next-themes";
 import posthog from "posthog-js";
@@ -21,6 +21,13 @@ import { api } from "~/utils/api";
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   display: "swap",
+  variable: "--font-jakarta",
+});
+
+const vazirmatn = Vazirmatn({
+  subsets: ["arabic", "latin"],
+  display: "swap",
+  variable: "--font-vazirmatn",
 });
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
@@ -52,15 +59,24 @@ const MyApp: AppType = ({ Component, pageProps }: AppPropsWithLayout) => {
   return (
     <>
       <style jsx global>{`
+        :root {
+          --font-sans: ${jakarta.style.fontFamily};
+        }
+        :root[dir="rtl"],
+        [dir="rtl"],
+        [lang="fa"] {
+          --font-sans:
+            ${vazirmatn.style.fontFamily}, ${jakarta.style.fontFamily};
+        }
         html {
-          font-family: ${jakarta.style.fontFamily};
+          font-family: var(--font-sans);
         }
         body {
           position: relative;
         }
       `}</style>
       <script src="/__ENV.js" />
-      <main className="font-sans">
+      <main className={`font-sans ${jakarta.variable} ${vazirmatn.variable}`}>
         <KeyboardShortcutProvider>
           <LinguiProviderWrapper>
             <FontSizeProvider>

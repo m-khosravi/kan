@@ -169,7 +169,7 @@ export default function CheckboxDropdown({
           <Menu.Items
             className={twMerge(
               "absolute top-full z-50 mt-1 w-56 origin-top-left rounded-md border-[1px] border-light-200 bg-light-50 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:border-dark-500 dark:bg-dark-200",
-              position === "left" ? "left-0" : "right-0",
+              position === "left" ? "start-0" : "end-0",
             )}
           >
             <div className="max-h-[350px] overflow-y-auto p-1">
@@ -186,13 +186,17 @@ export default function CheckboxDropdown({
                           setSelectedGroup(group.key);
                         }}
                       >
-                        <span className="mr-2 text-dark-900">{group.icon}</span>
+                        <span className="me-2 text-dark-900">{group.icon}</span>
                         <span className="pointer-events-none text-[12px] text-dark-900">
                           {group.label}
                         </span>
-                        <span className="ml-auto flex items-center gap-2 text-dark-900">
+                        <span className="ms-auto flex items-center gap-2 text-dark-900">
                           {renderSelectedCount(group.selectedCount)}
-                          <HiChevronRight size={14} aria-hidden="true" />
+                          <HiChevronRight
+                            size={14}
+                            aria-hidden="true"
+                            className="rtl:rotate-180"
+                          />
                         </span>
                       </div>
                     </Menu.Item>
@@ -210,11 +214,15 @@ export default function CheckboxDropdown({
                       }}
                     >
                       <span className="sr-only">{backLabel}</span>
-                      <HiChevronLeft size={14} aria-hidden="true" />
-                      <span className="ml-2 text-[12px] font-semibold">
+                      <HiChevronLeft
+                        size={14}
+                        aria-hidden="true"
+                        className="rtl:rotate-180"
+                      />
+                      <span className="ms-2 text-[12px] font-semibold">
                         {selectedGroupDetails?.label}
                       </span>
-                      <span className="ml-auto flex items-center">
+                      <span className="ms-auto flex items-center">
                         {renderSelectedCount(
                           selectedGroupDetails?.selectedCount,
                         )}
